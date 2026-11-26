@@ -115,3 +115,7 @@ grant execute on function create_household(text), join_household(text) to authen
 grant usage on schema public to authenticated;
 grant select on households, household_members to authenticated;
 grant select, insert, update, delete on categories, budgets, transactions to authenticated;
+
+-- is_member hanya dipakai policy untuk pengguna yang sudah masuk.
+revoke all on function is_member(uuid) from public, anon;
+grant execute on function is_member(uuid) to authenticated;
