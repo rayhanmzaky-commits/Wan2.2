@@ -142,12 +142,13 @@ button:disabled { opacity: 0.6; cursor: progress; }
   z-index: -2;
   transition: height 0.4s ease;
 }
-.env.warn::after { background: var(--fill-warn); }
-.env.over::after { background: var(--fill-over); }
+.env.lvl-warn::after { background: var(--fill-warn); }
+.env.lvl-over::after { background: var(--fill-over); }
 .env h4 { font-size: 1rem; }
 .remain { font-size: 1.4rem; font-weight: 800; margin: 0; letter-spacing: -0.02em; }
-.env.over .remain { color: var(--over); }
-.env.warn .remain { color: var(--warn); }
+.env.lvl-over .remain { color: var(--over); }
+.env.lvl-none .remain { color: var(--muted); }
+.env.lvl-warn .remain { color: var(--warn); }
 .env p { margin: 0; }
 .inline { display: grid; gap: 8px; }
 .inline .link { justify-self: start; }

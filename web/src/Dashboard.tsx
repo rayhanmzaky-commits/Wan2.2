@@ -118,9 +118,9 @@ export default function Dashboard({ householdId, email, onSignOut }: Props) {
             const budget = budgets[c.id] ?? 0
             const used = spentBy[c.id] ?? 0
             const ratio = budget > 0 ? used / budget : used > 0 ? 2 : 0
-            const level = ratio > 1 ? 'over' : ratio >= 0.75 ? 'warn' : 'ok'
+            const level = budget === 0 && used === 0 ? 'none' : ratio > 1 ? 'over' : ratio >= 0.75 ? 'warn' : 'fine'
             return (
-              <article key={c.id} className={`env ${level}`} style={{ ['--fill' as string]: `${Math.min(ratio, 1) * 100}%` }}>
+              <article key={c.id} className={`env lvl-${level}`} style={{ ['--fill' as string]: `${Math.min(ratio, 1) * 100}%` }}>
                 <h4>{c.name}</h4>
                 {editing === c.id ? (
                   <BudgetForm initial={budget} onSave={(n) => saveBudget(c.id, n)} onCancel={() => setEditing(null)} />
