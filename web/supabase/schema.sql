@@ -110,3 +110,8 @@ $$;
 
 revoke all on function create_household(text), join_household(text) from public, anon;
 grant execute on function create_household(text), join_household(text) to authenticated;
+
+-- Izin akses API untuk pengguna yang sudah masuk. RLS di atas yang membatasi baris yang boleh dilihat.
+grant usage on schema public to authenticated;
+grant select on households, household_members to authenticated;
+grant select, insert, update, delete on categories, budgets, transactions to authenticated;
