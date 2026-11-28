@@ -27,9 +27,9 @@ export default function Login() {
 
   return (
     <main className="center">
-      <form className="panel" onSubmit={submit}>
+      <form className="panel form" onSubmit={submit}>
         <h1>Keuangan Keluarga</h1>
-        <p className="muted">Bagi uang bulanan ke amplop, catat belanja, lihat sisanya.</p>
+        <p className="muted">Catat uang masuk dan keluar bersama keluarga, pantau anggaran, dan capai target tabungan.</p>
         <label>
           Email
           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />

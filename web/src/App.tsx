@@ -3,7 +3,8 @@ import type { Session } from '@supabase/supabase-js'
 import { configured, supabase } from './lib/supabase'
 import Login from './Login'
 import Setup from './Setup'
-import Dashboard from './Dashboard'
+import Shell from './Shell'
+import { DataProvider } from './lib/data'
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null)
@@ -58,10 +59,8 @@ export default function App() {
   if (!session) return <Login />
   if (!householdId) return <Setup onReady={setHouseholdId} />
   return (
-    <Dashboard
-      householdId={householdId}
-      email={session.user.email ?? ''}
-      onSignOut={() => supabase.auth.signOut()}
-    />
+    <DataProvider householdId={householdId} email={session.user.email ?? ''} onSignOut={() => supabase.auth.signOut()}>
+      <Shell />
+    </DataProvider>
   )
 }
